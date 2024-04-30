@@ -1,0 +1,47 @@
+Given a string, say S, print it in reverse manner, eliminating the repeated characters and spaces.
+
+Example 1:
+
+Input: S = "GEEKS FOR GEEKS"
+Output: "SKEGROF"
+
+string reverseString(string s)
+{
+    //code here.
+    // unordered_map<char,int> m; string w="";
+    
+    // for(int i=s.length()-1;i>=0;i--){
+    //     if(isalpha(s[i])){
+    //     m[s[i]]++;
+    //     if(m[s[i]]==1)
+    //     w+=s[i];
+    //     }
+    //67 cases passed
+    
+    // unordered_set<int> set;
+    // s.erase(remove(s.begin(),s.end(),' '),s.end());
+    // reverse(s.begin(),s.end());
+    // string w;
+    // for(int i=0;i<s.length();i++){
+    //     if(!set.count(s[i])){
+    //         w+=s[i];
+    //         set.insert(s[i]);
+            
+    //     }
+    // }
+    //
+    //81 cases passed
+    
+    
+     int hash[150]={0}; string ans="";
+        for(int i=s.length()-1;i>=0;i--){
+            if(hash[s[i]]<1 && s[i]!=32) // hash[s[i]-'A']==0 && s[i]!=32
+            ans+=s[i];
+            hash[s[i]]++; //hash[s[i]-'A']=1
+        }
+        
+        return ans;
+   //0.32 time taken
+    
+    }
+    
