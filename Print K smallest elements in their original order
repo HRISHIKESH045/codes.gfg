@@ -1,0 +1,47 @@
+Print K smallest elements in their original order
+Given an array, the task is to print K smallest elements from the array but they must be in the same order as they are in a given array.
+
+Example 1:
+ 
+
+Input : A[] = {1, 2, 2, 3, 1} and K = 2
+Output : 1 1
+Explanation:
+In an array A[] = {1, 2, 2, 3, 1} the smallest
+element is 1 and the second smallest element 
+is also 1. So, we will return [1, 1] as an 
+
+
+
+
+class Solution{
+  public:
+    vector<int> kSmallestElements(int arr[], int n, int k){
+        // Complete the function
+        vector<int>v,ans;
+        for(int i=0;i<n;i++)
+        {
+            v.push_back(arr[i]); //To store elements
+        }
+        map<int,int> mp;
+        sort(arr,arr+n); //To sort elements 
+        for(int i=0;i<k;i++){
+            mp[arr[i]]++;
+        }  //Adding sorted element according to key
+        
+        // Now checking one by one whether it exist or not accordingly
+          for(int i=0;i<n;i++)
+        {
+            int key=v[i];
+            if(mp.find(key)!=mp.end())
+            {
+                mp[key]--;
+                ans.push_back(key);
+                if(mp[key]==0)mp.erase(key);
+            }
+        }
+       return ans; 
+        
+    }
+
+};
